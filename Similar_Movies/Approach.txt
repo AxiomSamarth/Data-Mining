@@ -1,0 +1,32 @@
+Preprocessing Step :
+
+1. Firstly, I converted the JSON data into a csv data and employed pandas to handle it. 
+
+2. Among all the given attributes of the movie, I think votes, ratings, genre, age of movie(current_year-release year) and metascore are significant enough to find similarity among movies.
+
+3. For genre, in order to normalize it into single value, I found the number of common genres between the two movies under comparison and divided it by the total number of genres which both movies together have.
+
+4. Wherever the metascore is NaN, I replaced it with 0
+
+5. After doing this for each movie, I formed the numpy array of attributes for analysis.
+
+
+
+
+
+
+Analysis:
+
+1. I employed the Pearson Correlation Coefficient to find the similarity.
+
+Correlation coefficient = dot_product of normalized attributes of p and q objects / (standard_deviation(p) * standard_deviation(q) * total number of attributes)
+
+2. The coefficient that is found is stored as [movie_name, compared_with_movie_name, correlation_value]
+
+3. Now all this 249 items (not compared with itself as correlatio would be 1) are sorted based on correlation_value in descending order and top 10 are chosen to be the top 10 similar movies in their decreasing order of their similarity.
+
+4. This is done for all the 250 movies and written onto a file in the expected format as mentioned in the mail.
+
+
+
+Note/Request : Please feel free to send me a mail at deyagondsamarth@gmail.com for any clarification in the methodology adopted.
